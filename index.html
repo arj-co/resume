@@ -1,48 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hello World</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    .logo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      text-transform: lowercase;
-    }
-    .projects {
-      margin: 20px;
-    }
-    .projects h2 {
-      font-size: 28px;
-      color: #444;
-    }
-    .projects ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    .projects li {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arjun Shewalkar — Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #1a1a1a;
+            --gray: #737373;
+            --light-gray: #e5e5e5;
+            --white: #fafafa;
+            --accent: #0a0a0a;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Manrope:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Manrope', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 0;
+            opacity: 0;
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .hero-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: slideUp 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+        }
+
+        .hero-descriptor {
+            font-size: 1.125rem;
+            font-weight: 400;
+            color: var(--gray);
+            letter-spacing: 0.02em;
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out 0.5s backwards;
+        }
+
+        .hero-statement {
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 600px;
+            color: var(--off-black);
+            animation: slideUp 1s ease-out 0.7s backwards;
+        }
+
+        /* Work Section */
+        .work-section {
+            padding: 6rem 0 4rem;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .project {
+            margin-bottom: 12rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .project:nth-child(2) { animation-delay: 0.1s; }
+        .project:nth-child(3) { animation-delay: 0.2s; }
+        .project:nth-child(4) { animation-delay: 0.3s; }
+
+        .project-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .project-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 1.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .meta-value {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--off-black);
+            line-height: 1.6;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .project-description {
+            font-size: 1.125rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--off-black);
+        }
+
+        .project-description p {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .detail-section h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .detail-section ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .detail-section li {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--off-black);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .detail-section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 4px;
+            height: 1px;
+            background: var(--gray);
+        }
+
+        .detail-section ol {
+            list-style: none;
+            counter-reset: step;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .detail-section ol li {
+            counter-increment: step;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .detail-section ol li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--gray);
+            width: auto;
+            height: auto;
+            background: none;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--black);
+            text-decoration: none;
+            padding-bottom: 2px;
+            border-bottom: 1px solid var(--black);
+            transition: opacity 0.3s ease;
+        }
+
+        .project-link:hover {
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        footer {
+            padding: 8rem 0 4rem;
+            border-top: 1px solid var(--light-gray);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-name {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-meta {
+            display: flex;
+            gap: 3rem;
+            align-items: baseline;
+        }
+
+        .footer-link {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.5;
+        }
+
+        .footer-year {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: var(--gray);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 6rem 0;
+            }
+
+            .project-header,
+            .project-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project {
+                margin-bottom: 8rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .footer-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <div class="logo">arj-co</div>
-  <div class="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>Project 1: Personal Portfolio</li>
-      <li>Project 2: E-commerce Website</li>
-      <li>Project 3: Blog Platform</li>
-    </ul>
-  </div>
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <h1 class="hero-name">Arjun Shewalkar</h1>
+            <p class="hero-descriptor">Computer Science Student · Software Engineer</p>
+            <p class="hero-statement">Building calm, reliable systems with clarity and intention.</p>
+        </section>
+
+        <!-- Work -->
+        <section class="work-section">
+            <div class="section-label">Selected Work</div>
+
+            <!-- Project 1: Serene -->
+            <article class="project reveal">
+                <div class="project-header">
+                    <div>
+                        <h2 class="project-title">Serene / Inner Bloom</h2>
+                        <p class="project-subtitle">Mindful Meditation Web Application</p>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Stack</span>
+                            <span class="meta-value">TypeScript, Vite</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Focus</span>
+                            <span class="meta-value">UX Design, Mental Clarity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>A calm-first digital meditation experience designed to reduce cognitive load and create space for mindfulness. Every interaction is deliberate, every transition is measured.</p>
+                        <p>The interface prioritizes breathing room over feature density, using generous whitespace and minimal visual language to create an environment conducive to focus and mental clarity.</p>
+                        <a href="https://github.com/arjunshewalkar" class="project-link">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Design Principles</h3>
+                            <ul>
+                                <li>Intentional pacing in user flows</li>
+                                <li>Typography scaled for readability and calm</li>
+                                <li>Motion that suggests breath, not haste</li>
+                                <li>Color palette grounded in natural tones</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 2: Cockpit Console -->
+            <article class="project reveal">
+                <div class="project-header">
+                    <div>
+                        <h2 class="project-title">Cockpit Console</h2>
+                        <p class="project-subtitle">Developer Systems Interface</p>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Stack</span>
+                            <span class="meta-value">React, JavaScript</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Focus</span>
+                            <span class="meta-value">Information Architecture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>A systems interface exploring information hierarchy, component discipline, and dashboard clarity. Built as an exercise in structured thinking and layout logic.</p>
+                        <p>The project emphasizes the relationship between data density and cognitive overhead, using grid systems and typographic hierarchy to create legible, scannable information structures.</p>
+                        <a href="https://github.com/arjunshewalkar" class="project-link">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Architecture</h3>
+                            <ul>
+                                <li>Component-driven modularity</li>
+                                <li>Consistent visual grammar across views</li>
+                                <li>State management for real-time updates</li>
+                                <li>Responsive grid adapting to viewport constraints</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project 3: BlockElect -->
+            <article class="project reveal">
+                <div class="project-header">
+                    <div>
+                        <h2 class="project-title">BlockElect</h2>
+                        <p class="project-subtitle">Blockchain-Based E-Voting System</p>
+                    </div>
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Stack</span>
+                            <span class="meta-value">Solidity, React, Hardhat, Ethers.js</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Focus</span>
+                            <span class="meta-value">Decentralization, Cryptographic Identity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <div class="project-description">
+                        <p>A decentralized e-voting prototype enforcing all voting rules on-chain, eliminating centralized control. The system implements trustless verification where the blockchain itself becomes the source of truth.</p>
+                        <p>Smart contracts define candidate lists, voter eligibility, and immutable vote storage. The frontend serves as a thin interface layer, with MetaMask handling cryptographic identity and transaction signing.</p>
+                        <a href="https://github.com/arjunshewalkar" class="project-link">View on GitHub →</a>
+                    </div>
+
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h3>Core Architecture</h3>
+                            <ul>
+                                <li>Solidity smart contract defining election rules</li>
+                                <li>Hardhat local Ethereum blockchain for deployment</li>
+                                <li>MetaMask as cryptographic identity layer</li>
+                                <li>React + Ethers.js for wallet connection</li>
+                                <li>Node.js runtime for orchestration</li>
+                            </ul>
+                        </div>
+
+                        <div class="detail-section">
+                            <h3>Voting Flow</h3>
+                            <ol>
+                                <li>Contract deployment by admin</li>
+                                <li>On-chain voter registration</li>
+                                <li>Wallet connection via MetaMask</li>
+                                <li>Vote casting through frontend interface</li>
+                                <li>Smart contract validation and storage</li>
+                                <li>Results read directly from blockchain state</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-name">Arjun Shewalkar</div>
+                <div class="footer-meta">
+                    <a href="https://github.com/arjunshewalkar" class="footer-link">GitHub</a>
+                    <span class="footer-year">2026</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
