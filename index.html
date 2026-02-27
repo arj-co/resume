@@ -798,54 +798,48 @@
                 <article class="project">
                     <div class="project-inner">
                         <div class="project-sidebar">
-                            <div class="project-num">03 / BlockElect</div>
+                            <div class="project-num">03 / AskMyNotes</div>
                             <div class="project-rule"></div>
                         </div>
                         <div>
                             <div class="project-top">
-                                <h2 class="project-title">BlockElect</h2>
-                                <span class="project-subtitle">Blockchain E-Voting System</span>
+                                <h2 class="project-title">AskMyNotes</h2>
+                                <span class="project-subtitle">AI Study Copilot · Hackathon</span>
                             </div>
                             <div class="project-meta">
                                 <div>
                                     <span class="meta-label">Stack</span>
-                                    <span class="meta-val">Solidity · React · Hardhat · Ethers.js</span>
+                                    <span class="meta-val">React · Python · Claude API · Web Speech</span>
                                 </div>
                                 <div>
                                     <span class="meta-label">Focus</span>
-                                    <span class="meta-val">Decentralization · Cryptographic Identity</span>
+                                    <span class="meta-val">RAG · Voice Interaction · Grounded AI</span>
                                 </div>
                             </div>
                             <div class="project-content">
                                 <div class="project-desc">
-                                    <p>Voting systems require trust. Centralized systems require trusting the people who run them.</p>
-                                    <p>I wanted to explore whether smart contracts could enforce voting rules programmatically — not as a replacement for democracy, but as a technical exercise in trustless verification.</p>
-                                    <p>The entire voting logic lives on-chain. The frontend is deliberately thin — just a way to connect your wallet and interact with the contract. What I learned: transparency doesn't come from flashy UIs. It comes from readable code and immutable state. The blockchain itself is the audit trail.</p>
-                                    <a href="https://github.com/arj-co/BlockElect" class="project-link">
-                                        <span>View on GitHub</span>
-                                        <span class="link-arrow">→</span>
-                                    </a>
+                                    <p>Built in 8 hours. A study copilot that answers only from your own notes — never invents.</p>
+                                    <p>You upload notes across up to three subjects. Select one, ask a question, and the system answers strictly from that subject's material — citing the exact file, section, and confidence level. If the answer isn't in your notes, it refuses outright: <em>"Not found in your notes for [Subject]."</em> No hallucination, no guessing.</p>
+                                    <p>Phase 2 extended this into a voice-first teacher experience. Ask questions by speaking, hear answers read back, and maintain multi-turn context — follow up with "give an example" or "simplify it" and the system remembers the thread. All Phase 1 constraints remained fully intact: subject scoping, citations, confidence levels, and strict refusal behaviour.</p>
                                 </div>
                                 <div class="project-details">
                                     <div style="margin-bottom: 3rem;">
-                                        <div class="detail-title">Core Architecture</div>
+                                        <div class="detail-title">Features</div>
                                         <ul class="detail-list">
-                                            <li>Solidity smart contract enforcing all election rules</li>
-                                            <li>Hardhat with local blockchain simulation</li>
-                                            <li>MetaMask integration for cryptographic identity</li>
-                                            <li>React + Ethers.js for contract interaction</li>
-                                            <li>Node.js for build orchestration</li>
+                                            <li>PDF/TXT upload across three scoped subjects</li>
+                                            <li>Grounded Q&A with citations + evidence snippets</li>
+                                            <li>Confidence levels — High / Medium / Low</li>
+                                            <li>Strict "not found" refusal, zero fabrication</li>
+                                            <li>Voice input &amp; spoken responses via Web Speech API</li>
+                                            <li>Multi-turn context for natural follow-up questions</li>
+                                            <li>Study Mode: 5 MCQs + 3 short-answer questions generated per subject</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <div class="detail-title">Voting Flow</div>
-                                        <ul class="detail-list ordered">
-                                            <li>Admin deploys contract with candidate list</li>
-                                            <li>Eligible voters register on-chain with wallet address</li>
-                                            <li>Voter connects wallet via MetaMask</li>
-                                            <li>Vote submission triggers smart contract transaction</li>
-                                            <li>Contract validates eligibility and records vote</li>
-                                            <li>Results computed from blockchain state directly</li>
+                                        <div class="detail-title">Built In</div>
+                                        <ul class="detail-list">
+                                            <li>Phase 1 — 4 hours: core Q&A, citations, refusal logic</li>
+                                            <li>Phase 2 — 4 hours: voice layer + multi-turn conversation</li>
                                         </ul>
                                     </div>
                                 </div>
